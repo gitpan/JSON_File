@@ -1,10 +1,22 @@
 ==================================================
-Changes from 1739-11-23 00:00:00 +0000 to present.
+Changes from 1739-11-24 00:00:00 +0000 to present.
 ==================================================
 
 ------------------------------------------
-version 0.001 at 2013-09-06 22:16:17 +0000
+version 0.002 at 2013-09-07 22:07:23 +0000
 ------------------------------------------
+
+  Change: 39e14270662f8592820c2df40cb15ff5ea9baaae
+  Author: Torsten Raudssus <torsten@raudss.us>
+  Date : 2013-09-07 01:34:58 +0000
+
+    Added parameter to enable features of the JSON object 
+
+  Change: 2b300f81266dad9bab0100f9b9c4646ffb8ef4a2
+  Author: Torsten Raudssus <torsten@raudss.us>
+  Date : 2013-09-07 00:42:53 +0000
+
+    More evil test to assure deep stuff is handled fine 
 
   Change: 25b2ed46a0dfae3d9fc63dbaef05e250a3670a5e
   Author: Torsten Raudssus <torsten@raudss.us>

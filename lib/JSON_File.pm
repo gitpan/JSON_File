@@ -3,7 +3,7 @@ BEGIN {
   $JSON_File::AUTHORITY = 'cpan:GETTY';
 }
 {
-  $JSON_File::VERSION = '0.001';
+  $JSON_File::VERSION = '0.002';
 }
 # ABSTRACT: Tie a hash or an array to a JSON
 
@@ -15,7 +15,39 @@ use autodie;
 has json => (
   is => 'ro',
   lazy => 1,
-  default => sub { JSON->new()->utf8(1) },
+  default => sub {
+    my $self = shift;
+    my $json = JSON->new()->utf8(1)->canonical(1);
+    $json = $json->convert_blessed($self->convert_blessed) if $self->has_convert_blessed;
+    $json = $json->allow_blessed($self->allow_blessed) if $self->has_allow_blessed;
+    $json = $json->allow_unknown($self->allow_unknown) if $self->has_allow_unknown;
+    $json = $json->pretty($self->pretty) if $self->has_pretty;
+    return $json;
+  },
+);
+
+has pretty => (
+  is => 'ro',
+  lazy => 1,
+  predicate => 1,
+);
+
+has allow_unknown => (
+  is => 'ro',
+  lazy => 1,
+  predicate => 1,
+);
+
+has allow_blessed => (
+  is => 'ro',
+  lazy => 1,
+  predicate => 1,
+);
+
+has convert_blessed => (
+  is => 'ro',
+  lazy => 1,
+  predicate => 1,
 );
 
 has filename => (
@@ -237,20 +269,29 @@ JSON_File - Tie a hash or an array to a JSON
 
 =head1 VERSION
 
-version 0.001
+version 0.002
 
 =head1 SYNOPSIS
 
   use JSON_File;
 
-  tie(my %data, 'JSON_File','data.json');
+  tie( my %data, 'JSON_File', 'data.json' );
 
   $data{key} = "value"; # data directly stored in file
   print $data{key};     # data is always read from file, not cached
 
-  tie(my @array, 'JSON_File','array.json');
+  tie( my @array, 'JSON_File', 'array.json' );
 
   push @array, "value";
+
+  # you can enable functions of the JSON object:
+
+  tie( my %other, 'JSON_File', 'other.json',
+    pretty => 1,
+    allow_unknown => 1,
+    allow_blessed => 1,
+    convert_blessed => 1,
+  );
 
 =head1 DESCRIPTION
 
@@ -259,6 +300,8 @@ is always read directly from the file and also directly written to the file.
 This means also that if you add several keys to the hash or several elements
 to the array, that every key and every element will let the complete json file
 be rewritten.
+
+This is BETA, defaults may change in the future.
 
 =encoding utf8
 

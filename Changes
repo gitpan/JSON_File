@@ -1,10 +1,16 @@
 ==================================================
-Changes from 1739-11-24 00:00:00 +0000 to present.
+Changes from 1739-11-26 00:00:00 +0000 to present.
 ==================================================
 
 ------------------------------------------
-version 0.002 at 2013-09-07 22:07:23 +0000
+version 0.003 at 2013-09-09 02:27:24 +0000
 ------------------------------------------
+
+  Change: 8fb01727187fa1510f9bb4f45b59a340c98587c5
+  Author: Torsten Raudssus <torsten@raudss.us>
+  Date : 2013-09-09 04:26:53 +0000
+
+    Removed Path::Tiny towards Path::Class to be fatpackable 
 
   Change: 39e14270662f8592820c2df40cb15ff5ea9baaae
   Author: Torsten Raudssus <torsten@raudss.us>

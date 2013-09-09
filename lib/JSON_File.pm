@@ -3,13 +3,13 @@ BEGIN {
   $JSON_File::AUTHORITY = 'cpan:GETTY';
 }
 {
-  $JSON_File::VERSION = '0.002';
+  $JSON_File::VERSION = '0.003';
 }
 # ABSTRACT: Tie a hash or an array to a JSON
 
 use Moo;
 use JSON::MaybeXS;
-use Path::Tiny;
+use Path::Class;
 use autodie;
 
 has json => (
@@ -58,7 +58,7 @@ has filename => (
 has abs_filename => (
   is => 'ro',
   lazy => 1,
-  default => sub { path(shift->filename)->absolute },
+  default => sub { file(shift->filename)->absolute },
 );
 
 has tied => (
@@ -269,7 +269,7 @@ JSON_File - Tie a hash or an array to a JSON
 
 =head1 VERSION
 
-version 0.002
+version 0.003
 
 =head1 SYNOPSIS
 

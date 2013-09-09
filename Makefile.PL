@@ -22,14 +22,14 @@ my %WriteMakefileArgs = (
   "PREREQ_PM" => {
     "JSON::MaybeXS" => 0,
     "Moo" => 0,
-    "Path::Tiny" => 0,
+    "Path::Class" => 0,
     "autodie" => 0
   },
   "TEST_REQUIRES" => {
     "Test::LoadAllModules" => "0.021",
     "Test::More" => "0.98"
   },
-  "VERSION" => "0.002",
+  "VERSION" => "0.003",
   "test" => {
     "TESTS" => "t/*.t"
   }

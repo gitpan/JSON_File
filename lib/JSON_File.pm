@@ -2,11 +2,8 @@ package JSON_File;
 BEGIN {
   $JSON_File::AUTHORITY = 'cpan:GETTY';
 }
-{
-  $JSON_File::VERSION = '0.003';
-}
 # ABSTRACT: Tie a hash or an array to a JSON
-
+$JSON_File::VERSION = '0.004';
 use Moo;
 use JSON::MaybeXS;
 use Path::Class;
@@ -269,7 +266,7 @@ JSON_File - Tie a hash or an array to a JSON
 
 =head1 VERSION
 
-version 0.003
+version 0.004
 
 =head1 SYNOPSIS
 
@@ -279,6 +276,9 @@ version 0.003
 
   $data{key} = "value"; # data directly stored in file
   print $data{key};     # data is always read from file, not cached
+
+  $data{hash} = { attribute => "value" };
+  # DON'T set $data{hash}->{attribute} directly, it will not get saved
 
   tie( my @array, 'JSON_File', 'array.json' );
 
@@ -301,15 +301,13 @@ This means also that if you add several keys to the hash or several elements
 to the array, that every key and every element will let the complete json file
 be rewritten.
 
-This is BETA, defaults may change in the future.
-
 =encoding utf8
 
 =head1 SUPPORT
 
 IRC
 
-  Join #duckduckgo on FreeNode. Highlight Getty for fast reaction :).
+  Join #sycontent on irc.perl.org. Highlight Getty for fast reaction :).
 
 Repository
 

@@ -1,10 +1,16 @@
 ==================================================
-Changes from 1739-11-26 00:00:00 +0000 to present.
+Changes from 1740-11-27 00:00:00 +0000 to present.
 ==================================================
 
 ------------------------------------------
-version 0.003 at 2013-09-09 02:27:24 +0000
+version 0.004 at 2014-09-11 19:57:53 +0000
 ------------------------------------------
+
+  Change: 607531dc7093f045548201c4fdd8eba5e683dad9
+  Author: Torsten Raudssus <torsten@raudss.us>
+  Date : 2014-09-11 21:57:41 +0000
+
+    Updated faulty test, added warning, new travisyml 
 
   Change: 8fb01727187fa1510f9bb4f45b59a340c98587c5
   Author: Torsten Raudssus <torsten@raudss.us>
